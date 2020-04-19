@@ -104,7 +104,7 @@ class BackupDestination
             return $this->backupCollectionCache;
         }
 
-        $files = is_null($this->disk) ? [] : $this->disk->allFiles($this->backupName);
+        $files = is_null($this->disk) ? [] : $this->disk->allFiles();
 
         return $this->backupCollectionCache = BackupCollection::createFromFiles(
             $this->disk,
@@ -129,7 +129,7 @@ class BackupDestination
         }
 
         try {
-            $this->disk->allFiles($this->backupName);
+            $this->disk->allFiles();
 
             return true;
         } catch (Exception $exception) {
